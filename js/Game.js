@@ -26,10 +26,10 @@ class Game {
         player.getCount();
       }
       form = new Form()
-      form.display();
+      form.window();
     }
 
-    car1 = createSprite(100,200);
+   /* car1 = createSprite(100,200);
     car1.addImage("car1",car1_img);
     car2 = createSprite(300,200);
     car2.addImage("car2",car2_img);
@@ -38,7 +38,18 @@ class Game {
     car4 = createSprite(700,200);
     car4.addImage("car4",car4_img);
     cars = [car1, car2, car3, car4];
-  }
+  }*/
+  car1 = createSprite(3*width/12,height-100);
+  car1.addImage("car1",car1_img);
+  car2 = createSprite(5*width/12,height-100);
+  car2.addImage("car2",car2_img);
+  car3 = createSprite(7*width/12,hight-100);
+  car3.addImage("car3",car3_img);
+  car4 = createSprite(9*width/12,height-100);
+  car4.addImage("car4",car4_img);
+  cars = [car1, car2, car3, car4];
+}
+
 
   play(){
     form.hide();
@@ -49,9 +60,9 @@ class Game {
   //  console.log(player.rank);
     if(allPlayers !== undefined){
       background(rgb(198,135,103));
-      image(track, 0,-displayHeight*4,displayWidth, displayHeight*5);
-      
-      //var display_position = 100;
+     // image(track, 0,-windowHeight*4,windowWidth, windowHeight*5);
+     image(track, 0,-windowHeight*4,windowWidth,windowHeight*5);
+      //var window_position = 100;
       
       //index of the array
       var index = 0;
@@ -66,8 +77,8 @@ class Game {
 
         //position the cars a little away from each other in x direction
         x = x + 200;
-        //use data form the database to display the cars in y direction
-        y = displayHeight - allPlayers[plr].distance;
+        //use data form the database to window the cars in y direction
+        y = windowHeight - allPlayers[plr].distance;
         cars[index-1].x = x;
         cars[index-1].y = y;
        // console.log(index, player.index)
@@ -78,14 +89,14 @@ class Game {
           fill("red");
           ellipse(x,y,60,60);
           cars[index - 1].shapeColor = "red";
-          camera.position.x = displayWidth/2;
+          camera.position.x = windowWidth/2;
           camera.position.y = cars[index-1].y;
         }
         textAlign(CENTER);
          textSize(20); 
          text(allPlayers[plr].name, cars[index - 1].x, cars[index - 1].y + 75);
         //textSize(15);
-        //text(allPlayers[plr].name + ": " + allPlayers[plr].distance, 120,display_position)
+        //text(allPlayers[plr].name + ": " + allPlayers[plr].distance, 120,window_position)
       }
 
     }
@@ -109,6 +120,6 @@ class Game {
     console.log("Game Ended for "+player.name+"!! Rank is "+player.rank);
     var message = createElement('h2');
     message.html("Congratulations "+player.name+"!! Your Rank is "+player.rank);
-    message.position(displayWidth/2-70,displayHeight/4+40);
+    message.position(windowWidth/2-70,windowHeight/4+40);
   }
 }

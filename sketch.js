@@ -10,7 +10,7 @@ var form, player, game;
 
 var cars, car1, car2, car3, car4;
 
-var track, car1_img, car2_img, car3_img, car4_img;
+var track, car1_img, car2_img, car3_img, car4_img, back_img;
 
 var carSound;
 
@@ -22,10 +22,11 @@ function preload(){
   car4_img = loadImage("images/car4.png");
   ground = loadImage("images/ground.png");
   carSound = loadSound("images/sound.mp3");
+  back_img = loadImage("images/racing.jpg");
 }
 
 function setup(){
-  canvas = createCanvas(displayWidth - 20, displayHeight-30);
+  canvas = createCanvas(windowWidth - 20, windowHeight-30);
   database = firebase.database();
   game = new Game();
   game.getState();
@@ -34,6 +35,7 @@ function setup(){
 
 
 function draw(){
+  background(back_img);
   if(playerCount === 4){
     game.update(1);
   }
